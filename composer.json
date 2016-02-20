@@ -1,0 +1,20 @@
+{
+    "name": "0bp/authentication",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Boris Penck",
+            "email": "boris@bearonahill.com",
+            "homepage": "http://bearonahill.com",
+        }
+    ],
+    "require": {},
+    "require-dev": {
+        "phpunit/phpunit": "^5.2"
+    },
+    "autoload": {
+        "psr-4": {
+            "bearonahill\\": "lib/"
+        }
+    }
+}

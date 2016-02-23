@@ -125,6 +125,9 @@ class Authentication
 
     public function getUser():array
     {
+        if (isset($_SESSION[self::SESSION_KEY])){
+            return [];
+        }
         return $_SESSION[self::SESSION_KEY];
     }
 }

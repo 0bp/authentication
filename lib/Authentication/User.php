@@ -25,7 +25,7 @@ class User
     public function __set($var, $value)
     {
         if (!preg_match('/^[a-z0-9_]+$/i', $var)) {
-            throw new \Exception('Invalid property key ([a-z0-9]+)');
+            throw new \Exception('Invalid property key ([a-z0-9_]+)');
         }
         $this->properties[$var] = $value;
     }

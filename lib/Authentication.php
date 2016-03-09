@@ -63,8 +63,7 @@ class Authentication
         $passwordColumn = $this->mapper->getPasswordColumn();
 
         $sql = sprintf(
-            "SELECT %s FROM `%s` WHERE `%s`=:%s",
-            $this->mapper->getSQLColumns(),
+            "SELECT * FROM `%s` WHERE `%s`=:%s",
             $this->mapper->getTable(),
             $userColumn,
             $userColumn
@@ -98,6 +97,10 @@ class Authentication
         $dbUser = new User($user[$userColumn]);
         $dbUser->setHash($user[$passwordColumn]);
 
+        foreach($user as $property => $value) {
+            $dbUser->{$property} = $value;
+        }
+
         return $dbUser;
     }
 
@@ -123,11 +126,13 @@ class Authentication
         return $this->login($user);
     }
 
-    public function getUser():array
+    public function getUser():User
     {
-        if (isset($_SESSION[self::SESSION_KEY])){
+        $this->init();
+
+        if (!isset($_SESSION[self::SESSION_KEY])){
             return [];
         }
-        return $_SESSION[self::SESSION_KEY];
+        return $this->getUserFromArray($_SESSION[self::SESSION_KEY]);
     }
 }

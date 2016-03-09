@@ -64,7 +64,7 @@ class Mapper
     private function getListOfColumns():array
     {
         return array_merge(
-            [$this->userColumn, $this->passwordColumn],
+            ['id', $this->userColumn, $this->passwordColumn],
             array_keys($this->user->getProperties())
         );
     }

@@ -126,7 +126,7 @@ class Authentication
         return $this->login($user);
     }
 
-    public function getUser():User
+    public function getUser()
     {
         $this->init();
 

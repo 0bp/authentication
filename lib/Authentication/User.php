@@ -73,4 +73,12 @@ class User
     {
         return $this->properties;
     }
+
+    public function getProperty($key)
+    {
+        if (isset($this->properties[$key])) {
+            return $this->properties[$key];
+        }
+        throw new \Exception("Unknown user property (".$key.")");   
+    }
 }
